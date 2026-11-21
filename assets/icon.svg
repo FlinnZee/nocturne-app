@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C1929"/><stop offset="1" stop-color="#0A0910"/></linearGradient>
+    <radialGradient id="depth" cx="0.5" cy="0.46" r="0.56"><stop offset="0" stop-color="#2A2342" stop-opacity="0.9"/><stop offset="1" stop-color="#2A2342" stop-opacity="0"/></radialGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.07"/><stop offset="0.45" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+    <linearGradient id="b0" gradientUnits="userSpaceOnUse" x1="400" y1="190" x2="300" y2="740"><stop offset="0" stop-color="#FF9C62"/><stop offset="1" stop-color="#F2576C"/></linearGradient>
+    <linearGradient id="b1" gradientUnits="userSpaceOnUse" x1="470" y1="170" x2="800" y2="620"><stop offset="0" stop-color="#FFD592"/><stop offset="1" stop-color="#FF9A5C"/></linearGradient>
+    <linearGradient id="b2" gradientUnits="userSpaceOnUse" x1="820" y1="600" x2="300" y2="780"><stop offset="0" stop-color="#F7737A"/><stop offset="1" stop-color="#C9325E"/></linearGradient>
+    <mask id="cuts" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024"><rect width="1024" height="1024" fill="#fff"/><g stroke="#000" stroke-width="14" stroke-linecap="round" fill="none"><path d="M436.0 643.6 A250 250 0 0 1 248.8 751.7"/><path d="M436.0 380.4 A250 250 0 0 1 436.0 164.2"/><path d="M664.0 512.0 A250 250 0 0 1 851.2 620.1"/></g></mask>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="22"/></filter>
+    <clipPath id="sq"><rect x="40" y="40" width="944" height="944" rx="224"/></clipPath>
+  </defs>
+  <g clip-path="url(#sq)"><rect width="1024" height="1024" fill="url(#tile)"/><rect width="1024" height="1024" fill="url(#depth)"/><rect width="1024" height="1024" fill="url(#sheen)"/></g>
+  <rect x="42" y="42" width="940" height="940" rx="222" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="4"/>
+  <circle cx="512" cy="540" r="342" fill="#000" opacity="0.45" filter="url(#shadow)"/>
+  <g mask="url(#cuts)">
+    <path d="M436.0 380.4 A250 250 0 0 1 436.0 164.2 A356 356 0 0 1 851.2 620.1 A250 250 0 0 0 664.0 512.0 Z" fill="url(#b1)"/>
+    <path d="M436.0 643.6 A250 250 0 0 1 248.8 751.7 A356 356 0 0 1 436.0 164.2 A250 250 0 0 0 436.0 380.4 Z" fill="url(#b0)"/>
+    <path d="M664.0 512.0 A250 250 0 0 1 851.2 620.1 A356 356 0 0 1 248.8 751.7 A250 250 0 0 0 436.0 643.6 Z" fill="url(#b2)"/>
+  </g>
+</svg>
