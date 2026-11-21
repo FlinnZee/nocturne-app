@@ -69,6 +69,83 @@
     });
   });
 
+  // Runs `tick` every `ms` while `el` is on screen and the tab is visible.
+  const whileVisible = (el, ms, tick) => {
+    if (!el) return;
+    let timer = 0;
+    let seen = false;
+    const sync = () => {
+      clearInterval(timer);
+      if (seen && !document.hidden) timer = setInterval(tick, ms);
+    };
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; sync(); }, { threshold: 0.35 }).observe(el);
+    document.addEventListener("visibilitychange", sync);
+  };
+
+  // The window the iris opens onto: Home's featured film changes, as it does in the app.
+  const shots = [...document.querySelectorAll(".window .shot")];
+  if (!reduced && shots.length > 1) {
+    let at = 0;
+    whileVisible(document.querySelector(".window"), 4500, () => {
+      shots[at].classList.remove("is-on");
+      at = (at + 1) % shots.length;
+      shots[at].classList.add("is-on");
+    });
+  }
+
+  // A closer look: screens take turns, with a progress line under the current one.
+  const look = document.querySelector(".look-stage");
+  if (look) {
+    const tabs2 = [...look.querySelectorAll('[role="tab"]')];
+    const pics = [...look.querySelectorAll(".look-shot")];
+    const SPAN = 6500;
+    let current = 0;
+    let started = performance.now();
+    let paused = false;
+    let visible = false;
+    const show = (i, focus) => {
+      current = (i + tabs2.length) % tabs2.length;
+      tabs2.forEach((t, k) => {
+        const on = k === current;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        t.style.setProperty("--fill", reduced ? "1" : "0");
+        pics[k].classList.toggle("is-on", on);
+      });
+      // Load the next screen early so it never fades in half-drawn.
+      const next = pics[(current + 1) % pics.length];
+      if (next.loading === "lazy") next.loading = "eager";
+      started = performance.now();
+      if (focus) tabs2[current].focus();
+    };
+    tabs2.forEach((t, i) => {
+      t.addEventListener("click", () => show(i, false));
+      t.addEventListener("keydown", (e) => {
+        const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (step) { e.preventDefault(); show(current + step, true); }
+      });
+    });
+    look.addEventListener("pointerenter", () => { paused = true; });
+    look.addEventListener("pointerleave", () => { paused = false; started = performance.now() - parseFloat(tabs2[current].style.getPropertyValue("--fill") || "0") * SPAN; });
+    look.addEventListener("focusin", () => { paused = true; });
+    look.addEventListener("focusout", () => { paused = false; });
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) started = performance.now(); }, { threshold: 0.3 }).observe(look);
+    if (!reduced) {
+      const loop = (now) => {
+        if (paused || !visible || document.hidden) {
+          started = now - parseFloat(tabs2[current].style.getPropertyValue("--fill") || "0") * SPAN;
+        } else {
+          const f = Math.min(1, (now - started) / SPAN);
+          tabs2[current].style.setProperty("--fill", f.toFixed(4));
+          if (f >= 1) show(current + 1, false);
+        }
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+    }
+    show(0, false);
+  }
+
   // Release notes, newest first, straight from the update server.
   const list = document.getElementById("releases");
   const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -102,6 +179,13 @@
     .then((r) => (r && r.ok ? r.json() : []))
     .then((releases) => {
       if (!Array.isArray(releases) || releases.length === 0) return;
+      // The newest version, live, next to the call to action.
+      const chip = document.getElementById("version");
+      if (chip) {
+        const when = date(releases[0].date).replace(/ \d{4}$/, "");
+        chip.innerHTML = `<b>v${esc(releases[0].version)}</b> What's new${when ? `, ${esc(when)}` : ""}`;
+        chip.hidden = false;
+      }
       list.innerHTML = releases
         .map((r) => `<li class="release"><div class="release-version">${esc(r.version)}<span class="release-date">${esc(date(r.date))}</span></div><div class="release-body">${markdown(r.notes || "")}</div></li>`)
         .join("");

@@ -25,6 +25,7 @@
       <span>Nocturne</span>
     </a>
     <nav aria-label="Sections">
+      <a href="#look">Tour</a>
       <a href="#features">Features</a>
       <a href="#phone">Phone</a>
       <a href="#whats-new">What's new</a>
@@ -35,12 +36,14 @@
   <main id="top">
     <!-- Hero -->
     <section class="hero">
+      <div class="hero-ambient" aria-hidden="true"><img src="assets/shots/home-odyssey-1280.webp" alt="" decoding="async"></div>
       <div class="hero-copy">
         <h1 class="hero-title">Every film you own, in one quiet place.</h1>
         <p class="hero-lede">Nocturne is a video library and player for Windows. Point it at your folders and it finds your films and shows, dresses them in artwork, plays almost anything and remembers exactly where you stopped.</p>
         <div class="hero-actions">
           <a class="button" href="#inside">Look inside</a>
           <p class="hero-status"><span class="pulse" aria-hidden="true"></span>In private preview. Opening to everyone soon.</p>
+          <a class="version" id="version" href="#whats-new" hidden></a>
         </div>
       </div>
       <div class="hero-iris" aria-hidden="true">
@@ -55,49 +58,46 @@
     <section class="reveal" id="inside" aria-label="The Nocturne window">
       <div class="reveal-stage">
         <svg class="reveal-iris" viewBox="0 0 1024 1024" aria-hidden="true"><use href="#iris-blades"/></svg>
-        <div class="window" role="img" aria-label="Nocturne's home screen: a featured film, a row to continue watching and your list">
-          <div class="win-bar">
-            <svg class="win-mark" viewBox="0 0 1024 1024" aria-hidden="true"><use href="#iris-tile"/></svg>
-            <span class="win-title">Nocturne</span>
-            <span class="win-search">Search films, shows and people</span>
-            <span class="win-ctl"><i></i><i></i><i></i></span>
-          </div>
-          <div class="win-body">
-            <div class="win-rail">
-              <span class="rail-dot on"></span><span class="rail-dot"></span><span class="rail-dot"></span><span class="rail-dot"></span><span class="rail-dot"></span>
-              <span class="rail-avatar">D</span>
-            </div>
-            <div class="win-main">
-              <div class="feature-film art art-tide">
-                <div class="ff-copy">
-                  <span class="ff-kicker">Continue tonight</span>
-                  <strong class="ff-title">The Long Tide</strong>
-                  <span class="ff-meta">2024 · Drama · 2 h 4 min</span>
-                  <span class="ff-buttons"><b>Resume from 1:12:40</b><em>More info</em></span>
-                </div>
-              </div>
-              <div class="row-label">Continue watching</div>
-              <div class="row cw">
-                <div class="tile art art-harbour"><span>Ninth Harbour</span><i style="--p:.62"></i></div>
-                <div class="tile art art-orchard"><span>Neon Orchard · S1 E4</span><i style="--p:.28"></i></div>
-                <div class="tile art art-rain"><span>Kandy Rain</span><i style="--p:.85"></i></div>
-                <div class="tile art art-static"><span>Salt &amp; Static</span><i style="--p:.12"></i></div>
-              </div>
-              <div class="row-label">My List</div>
-              <div class="row posters">
-                <div class="poster art art-moons"><span>Paper Moons</span></div>
-                <div class="poster art art-ember"><span>Ember Line</span></div>
-                <div class="poster art art-glass"><span>Glasshouse</span></div>
-                <div class="poster art art-tide"><span>The Long Tide</span></div>
-                <div class="poster art art-orchard"><span>Neon Orchard</span></div>
-                <div class="poster art art-harbour"><span>Ninth Harbour</span></div>
-                <div class="poster art art-rain"><span>Kandy Rain</span></div>
-              </div>
-            </div>
-          </div>
+        <div class="window" role="img" aria-label="Nocturne's Home: the film you were watching, ready to resume, and everything you left part way">
+          <img class="shot is-on" src="assets/shots/home-swapped.webp" srcset="assets/shots/home-swapped-1280.webp 1280w, assets/shots/home-swapped.webp 1919w" sizes="(max-width: 900px) 100vw, 1180px" alt="" decoding="async" width="1919" height="1079">
+          <img class="shot" src="assets/shots/home-odyssey.webp" srcset="assets/shots/home-odyssey-1280.webp 1280w, assets/shots/home-odyssey.webp 1919w" sizes="(max-width: 900px) 100vw, 1180px" alt="" loading="lazy" decoding="async" width="1919" height="1079">
         </div>
       </div>
       <p class="reveal-caption">Your library, ready when you are.</p>
+    </section>
+
+    <!-- A closer look: real screens, one after another -->
+    <section class="look" id="look" aria-label="A closer look">
+      <div class="section-head">
+        <h2>See it the way you'll use it.</h2>
+        <p>Real screens from Nocturne, running on a real library.</p>
+      </div>
+      <div class="look-stage">
+        <div class="look-frame">
+          <img class="look-shot is-on" src="assets/shots/home-rows.webp" srcset="assets/shots/home-rows-1280.webp 1280w, assets/shots/home-rows.webp 1919w" sizes="(max-width: 900px) 100vw, 1180px" alt="Home: rows of films and shows from the library, highly rated, not watched yet and by genre" loading="lazy" decoding="async" width="1919" height="1079">
+          <img class="look-shot" src="assets/shots/show-page.webp" srcset="assets/shots/show-page-1280.webp 1280w, assets/shots/show-page.webp 1919w" sizes="(max-width: 900px) 100vw, 1180px" alt="A show's page: its season with every episode, stills, plot and the quality of each file" loading="lazy" decoding="async" width="1919" height="1079">
+          <img class="look-shot" src="assets/shots/movies.webp" srcset="assets/shots/movies-1280.webp 1280w, assets/shots/movies.webp 1919w" sizes="(max-width: 900px) 100vw, 1180px" alt="Browsing films: a grid of posters with ratings, the ones already in the library marked" loading="lazy" decoding="async" width="1919" height="1079">
+          <img class="look-shot" src="assets/shots/shows.webp" srcset="assets/shots/shows-1280.webp 1280w, assets/shots/shows.webp 1919w" sizes="(max-width: 900px) 100vw, 1180px" alt="Browsing shows: the best-rated series filtered by rating, with library titles marked" loading="lazy" decoding="async" width="1919" height="1079">
+        </div>
+        <div class="look-tabs" role="tablist" aria-label="Screens">
+          <button role="tab" aria-selected="true" data-i="0"><strong>Your shelves, sorted</strong><span>Rows build themselves from your files: highly rated, not watched yet, by genre, 4K and HDR.</span><i class="look-bar"><i></i></i></button>
+          <button role="tab" aria-selected="false" data-i="1" tabindex="-1"><strong>Every episode in its place</strong><span>Seasons, stills and plots, with the quality of every file at a glance.</span><i class="look-bar"><i></i></i></button>
+          <button role="tab" aria-selected="false" data-i="2" tabindex="-1"><strong>Films beyond your shelves</strong><span>Browse by genre, decade and rating, and see at once what's already yours.</span><i class="look-bar"><i></i></i></button>
+          <button role="tab" aria-selected="false" data-i="3" tabindex="-1"><strong>The next series to start</strong><span>The same for shows, best-rated first, with the ones you have marked.</span><i class="look-bar"><i></i></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- What it plays -->
+    <section class="formats" aria-label="Formats Nocturne plays">
+      <div class="formats-track">
+        <ul>
+          <li>4K</li><li>HDR10</li><li>HDR10+</li><li>Dolby Vision</li><li>Dolby Atmos</li><li>DTS-HD MA</li><li>TrueHD</li><li>HEVC 10-bit</li><li>AV1</li><li>H.264</li><li>VP9</li><li>MKV</li><li>MP4</li><li>AVI</li><li>FLAC</li><li>AAC 5.1</li><li>SRT</li><li>ASS</li><li>PGS</li><li>Multi-audio</li>
+        </ul>
+        <ul aria-hidden="true">
+          <li>4K</li><li>HDR10</li><li>HDR10+</li><li>Dolby Vision</li><li>Dolby Atmos</li><li>DTS-HD MA</li><li>TrueHD</li><li>HEVC 10-bit</li><li>AV1</li><li>H.264</li><li>VP9</li><li>MKV</li><li>MP4</li><li>AVI</li><li>FLAC</li><li>AAC 5.1</li><li>SRT</li><li>ASS</li><li>PGS</li><li>Multi-audio</li>
+        </ul>
+      </div>
     </section>
 
     <!-- Features -->
@@ -127,7 +127,7 @@
           </button>
           <button role="tab" id="t-stats" aria-controls="p-stats" aria-selected="false" tabindex="-1">
             <strong>Every night remembered</strong>
-            <span>Where you stopped, what you finished and how long you watched, on every PC you sign in on.</span>
+            <span>A watch history of every evening: what, when and for how long. Stats add it up, on every PC you sign in on.</span>
           </button>
         </div>
 
@@ -188,16 +188,11 @@
           </div>
           <!-- Stats -->
           <div class="panel" role="tabpanel" id="p-stats" aria-labelledby="t-stats" hidden>
-            <div class="stats">
-              <div class="stats-top">
-                <div><b>38 h</b><span>watched this month</span></div>
-                <div><b>14</b><span>films finished</span></div>
-                <div><b>2</b><span>PCs in step</span></div>
-              </div>
-              <div class="bars" aria-label="Hours watched each week">
-                <i style="--h:.35"></i><i style="--h:.55"></i><i style="--h:.4"></i><i style="--h:.8"></i><i style="--h:.62"></i><i style="--h:.95"></i><i style="--h:.7"></i><i style="--h:.48"></i>
-              </div>
-              <p class="stats-note">Only real playing time counts. Pauses and buffering add nothing.</p>
+            <div class="history">
+              <div class="history-shot"><img class="" src="assets/shots/stats.webp" srcset="assets/shots/stats-1280.webp 1280w, assets/shots/stats.webp 1919w" sizes="(max-width: 900px) 100vw, 640px" alt="Nocturne's Stats: watch time today, this week and this month, a 30-day chart and when you usually watch" loading="lazy" decoding="async" width="1919" height="1079"></div>
+              <div class="history-day">Tonight</div>
+              <div class="history-row"><i class="art art-tide"></i><span><b>The Long Tide</b>9:10 PM – 11:14 PM</span><em data-done>Finished</em></div>
+              <div class="history-row"><i class="art art-orchard"></i><span><b>Neon Orchard</b>S1 E4 · 8:12 PM – 8:55 PM</span><em>43 min</em></div>
             </div>
           </div>
         </div>
@@ -268,7 +263,7 @@
       <span>© 2026 dr.v0id. All rights reserved.</span>
     </div>
     <p>Nocturne is proprietary software. Copying, redistributing, cloning or reverse engineering it, its interface or its design is not permitted. <a href="licence.html">Licence agreement</a></p>
-    <p class="foot-small">This product uses the TMDB API but is not endorsed or certified by TMDB. Titles and artwork on this page are made up.</p>
+    <p class="foot-small">This product uses the TMDB API but is not endorsed or certified by TMDB. Film and show artwork in the screenshots comes from TMDB and belongs to its owners; titles in the illustrations are made up.</p>
   </footer>
 
   <!-- The mark, drawn once -->
